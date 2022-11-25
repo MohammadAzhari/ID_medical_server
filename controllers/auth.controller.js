@@ -24,6 +24,7 @@ const signup = asyncHandler(async (req, res, next) => {
 
   res.status(201).json({
     token,
+    user,
   });
 });
 
@@ -44,6 +45,7 @@ const signin = asyncHandler(async (req, res, next) => {
 
   res.status(201).json({
     token,
+    user,
   });
 });
 

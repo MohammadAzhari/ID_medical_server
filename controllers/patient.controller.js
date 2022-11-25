@@ -34,7 +34,7 @@ const addPatient = asyncHandler(async (req, res, next) => {
 });
 
 const addDiagnose = asyncHandler(async (req, res, next) => {
-  const { text, treatment, patientID, hospital } = req.body;
+  const { text, treatment, patientID, hospital, chronic } = req.body;
 
   if (!text || !treatment || !patientID)
     return next(new ErrorHandler("Please fill all the fields", 400));
@@ -50,6 +50,7 @@ const addDiagnose = asyncHandler(async (req, res, next) => {
     patient,
     treatment,
     hospital,
+    chronic,
   });
 
   await Patient.findByIdAndUpdate(patient._id, {
@@ -78,7 +79,7 @@ const getPatient = asyncHandler(async (req, res, next) => {
     });
 
   if (!patient) {
-    return next(new ErrorHandler("wrong id", 400));
+    return next(new ErrorHandler("wrong id", 404));
   }
 
   res.status(200).json({

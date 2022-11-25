@@ -23,6 +23,10 @@ const schema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    chronic: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
